@@ -1,31 +1,41 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Html = require('html-webpack-plugin');
+const MiniCSS = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const path = require("path");
+const Compression = require("compression-webpack-plugin");
+
 
 module.exports = {
     entry: "./src/js/app.js",
     output: {
         filename: "bundle.min.js",
-        path: path.resolve(__dirname, "./dist")
+        path: path.resolve(__dirname, "./build")
     },
-    watch: false,
     mode: "development",
     devtool: "source-map",
+    watch: true,
+    devServer: {
+        contentBase: path.join(__dirname, "./build"),//??
+        publicPath: "/build/",
+        compress: true,
+        port: 3002
+    },
+
     module: {
         rules: [
             {
                 test: /\.css$/i,
+                exclude: /node_modules/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    'style-loader', MiniCSS.loader, 'css-loader',
                     {
                         loader: "postcss-loader",
                         options: {
                             postcssOptions: {
                                 plugins: [
                                     [
-                                        "autoprefixer",
+                                        'autoprefixer',
                                     ],
                                 ],
                             },
@@ -36,13 +46,13 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    MiniCSS.loader,
                     'css-loader',
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true
-                        }
+                            implementation: require('css-loader'),
+                        },
                     },
                     {
                         loader: "postcss-loader",
@@ -74,93 +84,17 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin({
-            title: "My App",
+        new MiniCSS({
+            filename: "app.css",
+        }),
+        new Html({
+            title: "Pelia",
             filename: "index.html",
             template: "src/index.html"
+        }),
+        new Compression({
+            threshold: 0,
+            minRatio: 0.8
         })
     ]
 }
-
-
-
-
-
-
-
-
-// const path = require("path");
-// const entryPath = "object";
-// const entryFile = "app.js";
-// const autoprefixer = require('autoprefixer');
-// const Html = require('html-webpack-plugin');
-// const MiniCSS = require("mini-css-extract-plugin");
-// const Compression = require("compression-webpack-plugin");
-//
-//
-// module.exports = {
-//     entry: ["whatwg-fetch", `./${entryPath}/${entryFile}`],
-//     output: {
-//         filename: "out.js",
-//         path: path.resolve(__dirname, `${entryPath}/build/`)
-//     },
-//     mode: 'development',
-//     devtool: "source-map",
-//     watch: true,
-//     devServer: {
-//         contentBase: path.join(__dirname, `${entryPath}`),
-//         publicPath: "/build/",
-//         compress: true,
-//         port: 3010
-//     },
-//     module: {
-//         rules: [
-//             {
-//                 test: /\.js$/,
-//                 exclude: /node_modules/,
-//                 loader: "babel-loader",
-//             },
-//             {
-//                 test: /\.css$/,
-//                 use: ['style-loader', MiniCSS.loader,
-//                     {
-//                         loader: 'css-loader',
-//                         options: {
-//                             sourceMap: true
-//                         }
-//                     },
-//                     {
-//                         loader: 'postcss-loader',
-//                         options: {
-//                             plugins: () => [autoprefixer()]
-//                         }
-//                 }],
-//             },
-//             {
-//                 test: /\.(jpe?g|gif|png|svg)$/,
-//                 loader: "file-loader",
-//                 options: {
-//                     name: "[name].[ext]",
-//                     publicPath: "/images/",
-//                     outputPath: "/images/"
-//                 }
-//             }
-//         ]
-//     },
-//     plugins: [
-//         new Html({
-//             filename: "index.html",
-//             template: "./index.html"
-//         }),
-//         new MiniCSS({
-//             filename: "app.css",
-//         }),
-//         new Compression({
-//             threshold: 0,
-//             minRatio: 0.8
-//         })
-//     ]
-//
-//
-// };
