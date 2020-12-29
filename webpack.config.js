@@ -3,7 +3,7 @@ const MiniCSS = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const path = require("path");
-
+const Compression = require("compression-webpack-plugin");
 
 module.exports = {
     entry: "./src/js/app.js",
@@ -27,15 +27,25 @@ module.exports = {
                 test: /\.css$/i,
                 exclude: /node_modules/,
                 use: [
-                    'style-loader', MiniCSS.loader, 'css-loader',
+                    'style-loader', 'MiniCSS.loader', 'css-loader',
                     {
                         loader: "postcss-loader",
                         options: {
                             postcssOptions: {
-                                plugins: [
-                                    [
-                                        'autoprefixer',
-                                    ],
+                                plugins: () => [
+                                    require('autoprefixer'),
+
+                                ],
+                            },
+                        },
+                    },
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            postcssOptions: {
+                                plugins: () => [
+                                    require('syntax-dynamic-import'),
+
                                 ],
                             },
                         },
@@ -50,17 +60,18 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            implementation: require('css-loader'),
+                            sourceMap: true,
+                            implementation: () => [
+                                require('css-loader')(),
+                        ]
                         },
                     },
                     {
                         loader: "postcss-loader",
                         options: {
                             postcssOptions: {
-                                plugins: [
-                                    [
-                                        "autoprefixer",
-                                    ],
+                                plugins: () => [
+                                        require('autoprefixer'),
                                 ],
                             },
                         },
@@ -87,9 +98,12 @@ module.exports = {
             filename: "app.css",
         }),
         new Html({
-            title: "Pelia",
             filename: "index.html",
             template: "src/index.html"
         }),
+        new Compression({
+            threshold: 0,
+            minRatio: 0.8
+        })
     ]
 }
