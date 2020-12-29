@@ -18,6 +18,8 @@ module.exports = {
         contentBase: path.join(__dirname, "./build/"),//??
         publicPath: "/build/",
         compress: true,
+        progress: true,
+        overlay: true,
         port: 3002
     },
 
