@@ -3,20 +3,19 @@ const MiniCSS = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const path = require("path");
-const Compression = require("compression-webpack-plugin");
 
 
 module.exports = {
     entry: "./src/js/app.js",
     output: {
-        filename: "bundle.min.js",
+        filename: "out.min.js",
         path: path.resolve(__dirname, "./build")
     },
     mode: "development",
     devtool: "source-map",
     watch: true,
     devServer: {
-        contentBase: path.join(__dirname, "./build"),//??
+        contentBase: path.join(__dirname, "./build/"),//??
         publicPath: "/build/",
         compress: true,
         port: 3002
@@ -92,9 +91,5 @@ module.exports = {
             filename: "index.html",
             template: "src/index.html"
         }),
-        new Compression({
-            threshold: 0,
-            minRatio: 0.8
-        })
     ]
 }
