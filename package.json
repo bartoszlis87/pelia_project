@@ -21,6 +21,7 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "classnames": "^2.2.6",
+    "extract-text-webpack-plugin-last": "^4.0.0-beta.0",
     "node": "^13.13.0",
     "whatwg-fetch": "^3.5.0"
   },
@@ -43,6 +44,6 @@
     "style-loader": "^1.2.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.1"
   }
 }
