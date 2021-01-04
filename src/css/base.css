@@ -1,0 +1,280 @@
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+
+
+/* Table of Content
+==================================================
+	#Reset & Basics
+	#Basic Styles
+	#Typography
+	#Links
+	#Buttons
+	#Browser Fix
+	#Misc
+
+
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+	-webkit-box-sizing :border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+}
+
+
+
+	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline; 
+		text-decoration:none;}
+	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		display: block; }
+
+	ol, ul {
+		list-style: none; }
+	blockquote, q {
+		quotes: none; }
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none; }
+	table {
+		border-collapse: collapse;
+		border-spacing: 0; }
+		
+img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+*::-moz-selection {
+    background: #111111;
+    color: #ffffff;
+}
+
+a:focus {
+outline: 0;
+}
+
+iframe{width:100%;frameborder:0;}
+	
+
+
+/* #Basic Styles
+================================================== */
+	body {
+		background: #ffffff;
+		font: 13px/21px "open_sansregular", Arial, sans-serif;
+		color: #999;
+		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+		-webkit-text-size-adjust: 100%;
+		-webkit-text-stroke: 0.30px;
+ }
+
+
+
+/* #Typography
+================================================== */
+	h1, h2, h3, h4, h5, h6 {
+		color: #343434;
+		font-weight: normal; }
+	h1.mainTitle{
+		font-size:24px;
+		margin-bottom:15px;
+		text-transform:uppercase;
+	}
+	h2{font-size:18px;text-transform:uppercase;}
+	h3{font-size:16px;margin-bottom:10px;}
+	
+	p{line-height:25px;}
+	em { font-style: italic; }
+	strong { font-weight: bold; color: #333; }
+	small { font-size: 80%; }
+	
+	
+	.logo h1,.caption h1, .contactInfo h1, h1.mainTitle  {font-family: 'open_sansextrabold', Arial, sans-serif;}
+		h1, h2, h3, h4, h5, h6 ,nav#mainNav li,  .td h3, .fct .count, .service h3,.planBody li span, .item a .desc h3, .iList li, .footerholder, .specialBtn h3, .postTitle span.postDate, .comments .reply-btn a {font-family: 'open_sansbold', Arial, sans-serif;}
+	.td h3 span, .testiSlider li blockquote, .testiSlider li .testiProfile span, .planPrice h1 span, .planName h3, ul#category li, .projDesc span, h1.projTitle span, .clt p, .clt a, .fct .fc, #error h2, #success h2, .postTitle span, .postSingle blockquote, .postInfo {font-family: "open_sanslight_italic", Arial, sans-serif;}
+.searchForm input[type="text"], .searchForm  .submitSearch, .catList li span.countCat{font-family: "open_sanslight", Arial, sans-serif;}
+
+
+
+
+
+/* #Links
+================================================== */
+	
+	a,.errorForm, .contactForm #submit,.tactive span, .pagination ul li span, .replyForm #submit, .shortFolio span, .shortContact span  {
+		
+		transition: all 0.4s ease-in-out;
+		-ms-transition: all 0.4s ease-in-out 0s;
+		-webkit-transition: all 0.4s ease-in-out;
+		-moz-transition: all 0.4s ease-in-out;
+		-o-transition: all 0.4s ease-in-out;
+		
+	}
+	
+	
+
+
+
+/* #Buttons
+================================================== */	
+	
+	.specialBtn {
+	    background:#343434;
+	    display: inline-block;
+		margin-top:20px;
+	}
+
+
+	.specialBtn h3 {
+	    color: #FFFFFF;
+	    float: right;
+	    font-size: 13px;
+	    padding: 10px 20px;
+	    text-transform: uppercase;
+		margin-bottom:0;
+	}
+
+
+	.specialBtn i {
+	    background:#D0A068;
+	    border-radius: 3px 0 0 3px;
+		-webkit-border-radius: 3px 0 0 3px;
+		-moz-border-radius: 3px 0 0 3px;
+		-ms-border-radius:3px 0 0 3px;
+		-o-border-radius: 3px 0 0 3px;
+	    color: #FFFFFF;
+	    float: left;
+	    font-size: 18px;
+	    padding: 10px;
+	}
+	
+	
+	
+	.btn{
+		margin-top:20px;
+	}
+
+	.btn a{
+		background:#343434;
+		color:#F2F2F1;
+		padding:8px 25px;
+		display:inline-block;
+	}
+
+
+
+
+	.btn.featured a, .btn.more a{
+		background:#D0A068;
+		color:#ffffff;
+
+	}
+	
+	
+	.contactForm #submit,.specialBtn , .replyForm #submit, .mobileBtn , .pagination ul li, .tagsListSingle li a, .tagsList li a, .btn a   {
+	    border-radius: 3px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+	}
+	
+	
+	.ftIco span.ico, .fct i , .clt p i, .socialsFooter a {
+	    border-radius: 100px;
+		-webkit-border-radius: 100px;
+		-moz-border-radius: 100px;
+		-ms-border-radius: 100px;
+		-o-border-radius: 100px;
+}
+
+
+	
+	.tagsListSingle li a, .contactForm #submit, .replyForm #submit, .btn a, .specialBtn, .specialBtn i {
+
+	    box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset;
+		-webkit-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset;
+		-moz-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset;
+		-ms-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset;
+		-o-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.2) inset;
+
+	}
+	
+	
+	.tagsList li a {
+
+	    box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
+		-webkit-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
+		-moz-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
+		-ms-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
+		-o-box-shadow: 0 -3px 0 rgba(0, 0, 0, 0.1) inset;
+
+	}
+	
+	
+	
+	.btn a:hover, .tagsListSingle li a:hover, .tagsList li a:hover, .contactForm #submit:hover , .replyForm #submit:hover {
+		box-shadow:0 3px 0 rgba(0, 0, 0, 0.2) inset;
+		-webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2) inset;
+		-moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2) inset;
+		-ms-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2) inset;
+		-o-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2) inset;
+	}
+	
+	
+	 .tagsList li a:hover {
+		box-shadow:0 3px 0 rgba(0, 0, 0, 0.1) inset;
+		-webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1) inset;
+		-moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1) inset;
+		-ms-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1) inset;
+		-o-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1) inset;
+	}
+
+
+
+/* #Browser Fix
+================================================== */
+		
+		.socialsFooter a, .shortFolio:hover span, .shortContact:hover span, .features, .ftIco span.ico, .fct i, .item a .desc , .clt p i,
+		.searchForm input[type="text"],.pagination ul li , .contactForm input[type="text"], .contactForm textarea, 
+		.replyForm input[type="text"], .replyForm textarea, .comments .img {
+		    box-sizing:border-box;
+			-moz-box-sizing:border-box; /* Firefox */
+		}
+
+
+
+
+
+
+/* #Misc
+================================================== */
+	.remove-bottom { margin-bottom: 0 !important; }
+	.half-bottom { margin-bottom: 10px !important; }
+	.add-bottom { margin-bottom: 20px !important; }
+	.offsetBottom{margin-bottom:120px;}
+	.offsetTop{padding-top:120px;}
+	.singleOffset{margin-top:200px;}
+	.blogSingle.singleOffset {margin-top: 150px;}
+
+
