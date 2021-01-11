@@ -1,4 +1,4 @@
-const Html = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
@@ -73,7 +73,7 @@ const config = {
         new MiniCssExtractPlugin({
             filename: "./styles.css",
         }),
-        new Html({
+        new HtmlWebpackPlugin({
             filename: "index.html",
             template: "src/index.html"
         }),
