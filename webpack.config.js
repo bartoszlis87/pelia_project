@@ -18,6 +18,11 @@ const config = {
         publicPath: "dist/"
     },
     mode: "development",
+    performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    },
     devtool: "source-map",
     watch: true,
     devServer: {
@@ -65,7 +70,7 @@ const config = {
             }
         ]
     },
-
+    devtool: 'inline-source-map',
     plugins: [
         new CopyPlugin({
             patterns: [{ from: 'src/index.html' }],
