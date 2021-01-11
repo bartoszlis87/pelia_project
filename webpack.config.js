@@ -24,7 +24,7 @@ const config = {
         },
     },
     mode: 'development',
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     watch: true,
     performance: {
         hints: false,
@@ -32,7 +32,7 @@ const config = {
         maxAssetSize: 512000
     },
     devServer: {
-        contentBase: path.join(__dirname, './src/'),
+        contentBase: path.join(__dirname, './src'),
         inline: true, //automatyczny update
         publicPath: '/src/',
         compress: true,
@@ -82,10 +82,12 @@ const config = {
                         options: {
                             bypassOnDebug: true, // webpack@1.x
                             disable: true, // webpack@2.x and newer
+                            name: '[name].[ext]',
+                            outputPath: 'src/images/'
                         },
                     }
                 ]
-            }
+            },
         ]
     },
     plugins: [
@@ -96,6 +98,7 @@ const config = {
             filename: '[name].css',
         }),
         new HtmlWebpackPlugin({
+            inject: 'body',
             filename: '[name].html',
             template: 'src/index.html'
         }),
