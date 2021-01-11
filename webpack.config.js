@@ -1,20 +1,21 @@
 const Html = require('html-webpack-plugin');
-const MiniCSS = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const path = require("path");
 const Compression = require("compression-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
-module.exports = {
-    entry: {
-        'app.js' : './src/js/app.js',
-        'css' : './src/css/styles.css'
+const config = {
+    entry: { main: ['./src/js/app.js', './src/css/styles.css']
     },
 
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, "./build")
+        path: path.resolve(__dirname, "./build"),
+        publicPath: "dist/"
     },
     mode: "development",
     devtool: "source-map",
@@ -32,79 +33,44 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
-                exclude: /node_modules/,
-                use: [
-                    'style-loader', 'MiniCSS.loader', 'css-loader',
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions: {
-                                plugins: () => [
-                                    require('autoprefixer')(),
-
-                                ],
-                            },
-                        },
-                    },
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: () => [
-                                    require('syntax-dynamic-import'),
-
-                                ],
-                            },
-                        },
-                    },
-                ],
+                test: /\.js$/,
+                use: 'babel-loader',
+                exclude: /node_modules/
             },
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.css$/,
                 use: [
-                    MiniCSS.loader,
-                    'css-loader',
+                    MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ],
+                exclude: /\.module\.css$/
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true,
-                            implementation: () => [
-                                require('css-loader')(),
-                        ]
-                        },
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            sourceMap: true,
-                            postcssOptions: {
-                                plugins: () => [
-                                        require('autoprefixer'),
-                                ],
-                            },
-                        },
-                    },
+                            importLoaders: 1,
+                            modules: true
+                        }
+                    }
                 ],
+                include: /\.module\.css$/
             },
             {
-                test: /\.(png|jpe?g|gif|webp|awif|svg)$/i,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            sourceMap: true,
-                            context: 'public',
-                            name: '/images/[name]-[hash].[ext]',
-                            publicPath: '/',
-                        },
-                    },
-                ],
-            },
+                test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+                use: 'file-loader'
+            }
         ]
     },
+
     plugins: [
-        new MiniCSS({
+        new CopyPlugin({
+            patterns: [{ from: 'src/index.html' }],
+        }),
+        new MiniCssExtractPlugin({
             filename: "./styles.css",
         }),
         new Html({
@@ -114,7 +80,10 @@ module.exports = {
         new Compression({
             threshold: 0,
             minRatio: 0.8
-        })
+        }),
+        new CleanWebpackPlugin()
 
     ]
 }
+
+module.exports = config;

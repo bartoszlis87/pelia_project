@@ -35,15 +35,21 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-minify-dead-code-elimination": "^0.5.1",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "compression-webpack-plugin": "^1.1.12",
+    "compression-webpack-plugin": "^7.1.1",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
     "style-loader": "^1.2.0",
-    "webpack": "^4.43.0",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^4.3.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.11.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.1"
+    "webpack-dev-server": "^3.11.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "webpack-bundle-analyzer": "^4.3.0"
   }
 }
