@@ -15,16 +15,19 @@ const config = {
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, "./build"),
-        publicPath: "dist/"
+        publicPath: "build/"
     },
+
     mode: "development",
     performance: {
         hints: false,
         maxEntrypointSize: 512000,
         maxAssetSize: 512000
     },
+
     devtool: "source-map",
     watch: true,
+    //npm run start
     devServer: {
         contentBase: path.join(__dirname, "./src/"),
         inline: true, //automatyczny update
@@ -70,23 +73,25 @@ const config = {
             }
         ]
     },
-    devtool: 'inline-source-map',
+
     plugins: [
         new CopyPlugin({
             patterns: [{ from: 'src/index.html' }],
         }),
         new MiniCssExtractPlugin({
-            filename: "./styles.css",
+            filename: "./src/css/styles.css",
         }),
         new HtmlWebpackPlugin({
             filename: "index.html",
-            template: "src/index.html"
+            template: "./src/index.html"
         }),
-        new Compression({
-            threshold: 0,
-            minRatio: 0.8
-        }),
-        new CleanWebpackPlugin()
+        // new Compression({
+        //     threshold: 0,
+        //     minRatio: 0.8
+        // }),
+        new CleanWebpackPlugin(),
+        new webpack.HotModuleReplacementPlugin()
+
 
     ]
 }
