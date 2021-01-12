@@ -9,7 +9,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 
 const config = {
-    entry: { main: ['./src/js/app.js', './src/css/styles.css']
+    entry: { main: ['whatwg-fetch', './src/js/app.js', './src/css/styles.css']
     },
 
     output: {
